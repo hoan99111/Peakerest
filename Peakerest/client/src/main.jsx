@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import { HomePage } from "./routes/homepage/HomePage.jsx";
 import { CreatePage } from "./routes/createpage/CreatePage.jsx";
 import { AuthPage } from "./routes/authpage/AuthPage.jsx";
-import { PostPage } from "./routes/postpage/PostPage.jsx";
+import { PostPage } from "./routes/postPage/PostPage.jsx";
 import { SearchPage } from "./routes/searchPage/searchPage.jsx";
 import { ProfilePage } from "./routes/profilePage/profilePage.jsx";
 import { MainLayout } from "./layout/MainLayout.jsx";
