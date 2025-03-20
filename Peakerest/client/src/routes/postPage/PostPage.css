@@ -1,7 +1,7 @@
 .postPage {
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 32px;
 }
 
 .postContainer {
@@ -34,10 +34,31 @@
   overflow: hidden;
 }
 
-.postUser{
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.postUser {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.postUser
+.postUser img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.postUser span {
+  font-size: 14px;
+}
+
+@media (max-width: 1127px) {
+  .postContainer {
+    width: 100%;
+    margin-right: 16px;
+  }
+}
+
+@media (max-width: 751px) {
+  .postContainer {
+    flex-direction: column;
+  }
+}

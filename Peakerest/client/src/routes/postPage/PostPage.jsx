@@ -15,9 +15,8 @@ export const PostPage = () => {
         <div className="postDetails">
           <PostInteraction></PostInteraction>
           <Link to="/jonh" className="postUser">
-            <Image path="/general/noAvatar.png">
-              <span>John</span>
-            </Image>
+            <Image path="/general/noAvatar.png"></Image>
+            <span>John</span>
           </Link>
           <Comments></Comments>
         </div>
