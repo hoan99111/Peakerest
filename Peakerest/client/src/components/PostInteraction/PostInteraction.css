@@ -17,4 +17,9 @@
   padding: 12px;
   font-weight: bold;
   cursor: pointer;
+  border: none;
+}
+
+.postInteractions button:hover {
+  background-color: rgba(190, 18, 18, 0.874);
 }
