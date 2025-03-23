@@ -12,6 +12,7 @@ export const CreatePage = () => {
         <div className="upload">
           <div className="uploadTitle">
             <Image path="/general/upload.svg" alt=""></Image>
+            <span>Choose a file</span>
           </div>
           <div className="uploadInfo">
             We recommend using high quality .jpg files less than 20mb
@@ -29,7 +30,8 @@ export const CreatePage = () => {
           </div>
           <div className="createFormItem">
             <label htmlFor="description">Description</label>
-            <input
+            <textarea
+              rows={6}
               type="text"
               placeholder="Add a detailed description"
               name="description"
