@@ -9,19 +9,30 @@ import { PostPage } from "./routes/postPage/PostPage.jsx";
 import { SearchPage } from "./routes/searchPage/searchPage.jsx";
 import { ProfilePage } from "./routes/profilePage/profilePage.jsx";
 import { MainLayout } from "./layout/MainLayout.jsx";
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/create" element={<CreatePage />}></Route>
-          <Route path="/pin/:id" element={<PostPage />}></Route>
-          <Route path="/:username" element={<ProfilePage />}></Route>
-        </Route>
-        <Route path="/auth" element={<AuthPage />}></Route>
-      </Routes>
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/create" element={<CreatePage />}></Route>
+            <Route path="/pin/:id" element={<PostPage />}></Route>
+            <Route path="/:username" element={<ProfilePage />}></Route>
+          </Route>
+          <Route path="/auth" element={<AuthPage />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </QueryClientProvider>
   </StrictMode>
 );
