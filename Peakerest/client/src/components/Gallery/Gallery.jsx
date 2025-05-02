@@ -1,7 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { GalleryItem } from "../GalleryItem/GalleryItem";
 import "./Gallery.css";
-import axios from "axios"
+import axios, { all } from "axios";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const items = [
   {
@@ -144,26 +145,44 @@ const items = [
   },
 ];
 
-function Gallery() {
-  const fetchPins = async () => {
-    const res = await axios.get(`${import.meta.env.VITE_API_ENDPOINT}/pins`);
-    return res.data;
-  };
-  const { isPending, error, data } = useQuery({
-    queryKey: ["todos"],
-    queryFn: fetchPins,
+const fetchPins = async ({ pageParam, search }) => {
+  const res = await axios.get(
+    `${import.meta.env.VITE_API_ENDPOINT}/pins?cusrsor=${pageParam}&search=${
+      search || ""
+    }`
+  );
+  return res.data;
+};
+
+const Gallery = ({ search }) => {
+  const { data, fetchNextPage, hasNextPage, status } = useInfiniteQuery({
+    queryKey: ["pins", search],
+    queryFn: ({ pageParam = 0 }) => fetchPins({ pageParam, search }),
+    initialPageParam: 0,
+    getNextPageParam: (lastPage, pages) => lastPage.nextCursor,
   });
 
-  if(error) return "An error has occured" + error.message
-  if(isPending) return "Loading..."
+  if (status === "pending") return "Loading...";
+  if (status === "error") return "Something went wrong";
+
+  console.log(data);
+  const allPins = data?.pages.flatMap((page) => page.pins) || [];
 
   return (
-    <div className="gallery">
-      {items.map((item) => (
-        <GalleryItem key={item.id} item={item}></GalleryItem>
-      ))}
-    </div>
+    <InfiniteScroll
+      dataLength={allPins.length}
+      next={fetchNextPage}
+      hasMore={!!hasNextPage}
+      loader={<h4>Loading more pins</h4>}
+      endMessage={<h3>All posts loaded</h3>}
+    >
+      <div className="gallery">
+        {allPins?.map((item) => (
+          <GalleryItem key={item._id} item={item}></GalleryItem>
+        ))}
+      </div>
+    </InfiniteScroll>
   );
-}
+};
 
 export default Gallery;

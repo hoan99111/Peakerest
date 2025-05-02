@@ -1,3 +1,10 @@
+import { useSearchParams } from "react-router";
+import Gallery from "../../components/Gallery/Gallery";
+import "./searchPage.css";
+
 export const SearchPage = () => {
-  return <div>S</div>;
+  let [searchParams] = useSearchParams();
+
+  const search = searchParams.get("search");
+  return <Gallery search={search} />;
 };
