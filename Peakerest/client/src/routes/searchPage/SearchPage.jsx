@@ -6,5 +6,7 @@ export const SearchPage = () => {
   let [searchParams] = useSearchParams();
 
   const search = searchParams.get("search");
-  return <Gallery search={search} />;
+  const boardId = searchParams.get("boardId");
+
+  return <Gallery search={search} boardId={boardId} />;
 };

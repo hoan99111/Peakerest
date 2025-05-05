@@ -1,5 +1,5 @@
 import express from "express";
-import { test } from "../controllers/user.controller.js";
+import { getUSer } from "../controllers/user.controller.js";
 import User from "../models/user.models.js";
 import bcrypt from "bcryptjs";
 
@@ -24,6 +24,6 @@ router.patch("/update", async (req, res) => {
   res.json(updateUser);
 });
 
-router.get("/test", test);
+router.get("/:username", getUSer);
 
 export default router;

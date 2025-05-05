@@ -20,10 +20,10 @@ const seedDB = async () => {
     const hashedPassword = await bcrypt.hash("password123", 10);
     const user = new User({
       displayName: `User ${i}`,
-      username: `user ${i}`,
+      username: `user${i}`,
       email: `user${i}@mail.com`,
       hashedPassword: hashedPassword,
-      img: `htttp://picsum.photos/id/${i}/200/200`,
+      img: `http://picsum.photos/id/${i}/200/200`,
     });
     users.push(await user.save());
   }
