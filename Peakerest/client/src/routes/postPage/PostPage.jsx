@@ -19,7 +19,6 @@ export const PostPage = () => {
 
   if (!data) return "Pin not found!!";
 
-  console.log(data);
   return (
     <div className="postPage">
       <IconArrowBack className="backArrow" stroke={2} />
@@ -33,7 +32,7 @@ export const PostPage = () => {
             <Image src={data.user.img || "/general/noAvatar.png"}></Image>
             <span>{data.user.displayName}</span>
           </Link>
-          <Comments></Comments>
+          <Comments id = {data._id}></Comments>
         </div>
       </div>
     </div>

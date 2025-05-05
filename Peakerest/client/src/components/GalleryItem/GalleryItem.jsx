@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import "./GalleryItem.css";
 import { Image } from "../image/image";
-export const GalleryItem = ({ item }) => {
+export const GalleryItem = ({item}) => {
   const optimizedHeight = (372 * item.height) / item.width;
   return (
     <div

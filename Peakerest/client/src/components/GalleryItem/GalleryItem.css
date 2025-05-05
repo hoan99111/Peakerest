@@ -1,6 +1,7 @@
 .galleryItem {
   display: flex;
   position: relative;
+  cursor: pointer;
 }
 
 .galleryItem img {
@@ -15,7 +16,7 @@
   display: none;
 }
 
-.overlayIcons{
+.overlayIcons {
   position: absolute;
   bottom: 16px;
   right: 16px;
@@ -23,12 +24,14 @@
   gap: 8px;
 }
 
-.overlayIcons button img{
+.overlayIcons button img {
   width: 20px;
   height: 20px;
 }
 
 .galleryItem:hover .overlay {
+  display: flex;
+  border-radius: 16px;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -36,7 +39,6 @@
   left: 0;
   background-color: rgba(0, 0, 0, 0.279);
 }
-
 
 .galleryItem:hover .saveButton {
   display: block;

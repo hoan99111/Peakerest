@@ -15,7 +15,6 @@ export const Boards = ({ userId }) => {
 
   if (error) return "An error has occurred: " + error.message;
 
-  console.log(data);
   return (
     <div className="collections">
       {/* COLLECTION */}
