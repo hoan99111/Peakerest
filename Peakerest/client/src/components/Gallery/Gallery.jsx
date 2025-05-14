@@ -1,4 +1,4 @@
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { GalleryItem } from "../GalleryItem/GalleryItem";
 import "./Gallery.css";
 import axios from "axios";

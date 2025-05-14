@@ -1,10 +1,40 @@
 import React, { useState } from "react";
 import "./AuthPage.css";
 import { Image } from "../../components/image/image";
+import apiRequest from "../../utils/apiRequest";
 
 export const AuthPage = () => {
   const [isRegister, setIsRegister] = useState(false);
   const [error, setError] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+
+    if (isRegister && data.password !== data.reEnterPassword) {
+      setError("Password do not match!!");
+      return;
+    }
+
+    console.log(data);
+    delete data.reEnterPassword;
+
+    try {
+      const res = await apiRequest.post(
+        `/users/auth/${isRegister ? "register" : "login"}`,
+        data
+      );
+      console.log(res.data);
+    } catch (err) {
+      setError(err.response.data.message);
+    }
+
+    setError(false);
+
+    // console.log(data);
+  };
+  ``;
 
   return (
     <div className="authPage">
@@ -12,11 +42,11 @@ export const AuthPage = () => {
         <Image path="/general/logo.png" w={36} h={36}></Image>
         <h1>{isRegister ? "Create an account" : "Login to your account"}</h1>
         {isRegister ? (
-          <form key="register">
+          <form key="register" onSubmit={handleSubmit}>
             <div className="formGroup">
               <label htmlFor="username">Username</label>
               <input
-                type="username"
+                type="text"
                 placeholder="Username"
                 id="username"
                 required
@@ -26,7 +56,7 @@ export const AuthPage = () => {
             <div className="formGroup">
               <label htmlFor="displayName">Display name</label>
               <input
-                type="displayName"
+                type="text"
                 placeholder="Display name"
                 id="displayName"
                 required
@@ -54,35 +84,40 @@ export const AuthPage = () => {
               />
             </div>
             <div className="formGroup">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="re-enter password">Re-enter password</label>
               <input
                 type="password"
-                placeholder="Password"
-                id="password"
+                placeholder="Re-enter password"
+                id="re-enterPassword"
                 required
-                name="email"
+                name="reEnterPassword"
               />
             </div>
             <button type="submit">Register</button>
             <p onClick={() => setIsRegister(false)}>
-              Already have an account? 
+              Already have an account?
               <b>Login</b>
             </p>
             {error && <p className="error">{error}</p>}
           </form>
         ) : (
-          <form key="login">
+          <form key="login" onSubmit={handleSubmit}>
             <div className="formGroup">
               <label htmlFor="email">Email</label>
-              <input type="email" placeholder="Email" id="email" />
+              <input type="email" placeholder="Email" id="email" name="email" />
             </div>
             <div className="formGroup">
               <label htmlFor="password">Password</label>
-              <input type="password" placeholder="Password" id="password" />
+              <input
+                type="password"
+                placeholder="Password"
+                id="password"
+                name="password"
+              />
             </div>
             <button type="submit">Login</button>
             <p onClick={() => setIsRegister(true)}>
-              Don&apos;t have an account? 
+              Don&apos;t have an account?
               <b>Register</b>
             </p>
             {error && <p className="error">{error}</p>}

@@ -1,5 +1,10 @@
 import express from "express";
-import { getUSer } from "../controllers/user.controller.js";
+import {
+  getUSer,
+  loginUser,
+  logoutUser,
+  registerUser,
+} from "../controllers/user.controller.js";
 import User from "../models/user.models.js";
 import bcrypt from "bcryptjs";
 
@@ -20,10 +25,13 @@ router.post("/create", async (req, res) => {
 });
 
 router.patch("/update", async (req, res) => {
-  const updateUser = await User.find({username:"test"}, req.body)
+  const updateUser = await User.find({ username: "test" }, req.body);
   res.json(updateUser);
 });
 
 router.get("/:username", getUSer);
+router.post("/auth/login", loginUser);
+router.post("/auth/logout", logoutUser);
+router.post("/auth/register", registerUser);
 
 export default router;
