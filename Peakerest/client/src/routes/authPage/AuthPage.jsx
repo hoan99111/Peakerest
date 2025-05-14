@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import "./AuthPage.css";
 import { Image } from "../../components/image/image";
 import apiRequest from "../../utils/apiRequest";
@@ -6,6 +7,8 @@ import apiRequest from "../../utils/apiRequest";
 export const AuthPage = () => {
   const [isRegister, setIsRegister] = useState(false);
   const [error, setError] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,7 +20,7 @@ export const AuthPage = () => {
       return;
     }
 
-    console.log(data);
+    // console.log(data);
     delete data.reEnterPassword;
 
     try {
@@ -25,7 +28,10 @@ export const AuthPage = () => {
         `/users/auth/${isRegister ? "register" : "login"}`,
         data
       );
-      console.log(res.data);
+
+      navigate("/")
+      // console.log(res.data);
+    
     } catch (err) {
       setError(err.response.data.message);
     }
