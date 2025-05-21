@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import "./AuthPage.css";
 import { Image } from "../../components/image/image";
 import apiRequest from "../../utils/apiRequest";
+import useAuthStore from "../../utils/storeAuth";
 
 export const AuthPage = () => {
   const [isRegister, setIsRegister] = useState(false);
@@ -10,9 +11,12 @@ export const AuthPage = () => {
 
   const navigate = useNavigate();
 
+  const { setCurrentUser } = useAuthStore();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
+
     const data = Object.fromEntries(formData);
 
     if (isRegister && data.password !== data.reEnterPassword) {
@@ -29,9 +33,10 @@ export const AuthPage = () => {
         data
       );
 
-      navigate("/")
+      setCurrentUser(res.data);
+      
+      navigate("/");
       // console.log(res.data);
-    
     } catch (err) {
       setError(err.response.data.message);
     }

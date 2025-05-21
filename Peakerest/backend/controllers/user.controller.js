@@ -13,7 +13,7 @@ export const getUSer = async (req, res) => {
 
 export const registerUser = async (req, res) => {
   const { username, displayName, email, password } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
 
   if (!username || !displayName || !email || !password)
     return res.status(400).json({ message: "All fields are required!!" });
@@ -47,14 +47,14 @@ export const logoutUser = async (req, res) => {
 
 export const loginUser = async (req, res) => {
   const { email, password } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
 
   if (!email || !password)
     return res.status(400).json({ message: "All fields are required!!" });
 
   const user = await User.findOne({ email });
 
-  console.log(user);
+  // console.log(user);
 
   if (!user) {
     req.status(401).json({ message: "Invalid email or password" });
