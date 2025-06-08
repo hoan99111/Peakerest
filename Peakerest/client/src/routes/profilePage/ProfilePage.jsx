@@ -6,6 +6,7 @@ import { Boards } from "../../components/boards/Boards";
 import { useQuery } from "@tanstack/react-query";
 import apiRequest from "../../utils/apiRequest";
 import { useParams } from "react-router";
+import FollowButton from "./FollowButton";
 
 export const ProfilePage = () => {
   const [type, setType] = useState("saved");
@@ -31,13 +32,18 @@ export const ProfilePage = () => {
         h={100}
       ></Image>
       <h1 className="profileName">{data.displayName}</h1>
-      <span className="profileUsername">{data.username}</span>
-      <div className="followCounts">10 followers ~ 20 followings </div>
+      <span className="profileUsername">@{data.username}</span>
+      <div className="followCounts">
+        {data.followerCount} follower ~ {data.followingCount} following
+      </div>
       <div className="profileInteractions">
         <Image path="/general/share.svg" alt=""></Image>
         <div className="profileButtons">
           <button>Message</button>
-          <button>Follow</button>
+          <FollowButton
+            isFollowing={data.isFollowing}
+            username={data.username}
+          ></FollowButton>
         </div>
         <Image path="/general/more.svg" alt=""></Image>
       </div>

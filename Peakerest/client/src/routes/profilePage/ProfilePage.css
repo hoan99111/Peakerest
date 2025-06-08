@@ -54,29 +54,32 @@
   color: white;
 }
 
+.profileButtons button:last-child:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 .profileButtons button:last-child:hover {
   background-color: rgba(152, 32, 32, 0.951);
 }
 
-.profileOptions{
-    display: flex;
-    gap: 16px;
-    margin-top: 32px;
-    margin-bottom: 16px;
-    font-weight: 500;
+.profileOptions {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  font-weight: 500;
 }
 
-.profileOptions span{ 
-    cursor: pointer;
-    padding: 8px 0px;
-
+.profileOptions span {
+  cursor: pointer;
+  padding: 8px 0px;
 }
 
-.profileOptions span:hover{
-    color: gray;
-
+.profileOptions span:hover {
+  color: gray;
 }
 
-.active{
-    border-bottom: 3px solid black;
+.active {
+  border-bottom: 3px solid black;
 }

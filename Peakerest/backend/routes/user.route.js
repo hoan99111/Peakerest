@@ -4,9 +4,12 @@ import {
   loginUser,
   logoutUser,
   registerUser,
+  followUser,
 } from "../controllers/user.controller.js";
 import User from "../models/user.models.js";
 import bcrypt from "bcryptjs";
+import { verifyToken } from "../middleware/verifyToken.js";
+
 
 const router = express.Router();
 
@@ -33,5 +36,6 @@ router.get("/:username", getUSer);
 router.post("/auth/login", loginUser);
 router.post("/auth/logout", logoutUser);
 router.post("/auth/register", registerUser);
+router.post("/follow/:username", verifyToken, followUser);
 
 export default router;

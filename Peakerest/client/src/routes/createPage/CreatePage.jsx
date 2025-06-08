@@ -1,7 +1,11 @@
 import { Image } from "../../components/image/image";
 import "./CreatePage.css";
-
+import useAuthStore from '../../utils/authStore';
+import {useNAvigate} from 'react-router';
 export const CreatePage = () => {
+
+const {currentUser} = useAuthStore()
+
   return (
     <div className="createPage">
       <div className="createTop">
