@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import "./GalleryItem.css";
-import { Image } from "../image/image";
+import  Image  from "../image/image";
 export const GalleryItem = ({item}) => {
   const optimizedHeight = (372 * item.height) / item.width;
   return (
@@ -8,7 +8,7 @@ export const GalleryItem = ({item}) => {
       className="galleryItem"
       style={{ gridRowEnd: `span ${Math.ceil(item.height / 100)}` }}
     >
-      <Image src={item.media} alt="" w={372} h={optimizedHeight}></Image>
+      <Image path={item.media} alt="" w={372} h={optimizedHeight}></Image>
       <Link to={`/pin/${item._id}`} className="overlay"></Link>
       <button className="saveButton">Save</button>
       <div className="overlayIcons">

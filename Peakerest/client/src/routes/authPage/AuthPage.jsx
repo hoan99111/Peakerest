@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import "./AuthPage.css";
-import { Image } from "../../components/image/image";
+import Image from "../../components/image/image";
 import apiRequest from "../../utils/apiRequest";
 import useAuthStore from "../../utils/storeAuth";
 
@@ -34,7 +34,7 @@ export const AuthPage = () => {
       );
 
       setCurrentUser(res.data);
-      
+
       navigate("/");
       // console.log(res.data);
     } catch (err) {

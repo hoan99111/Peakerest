@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router";
-import { Image } from "../../components/image/image";
+import Image from "../../components/image/image";
 import { PostInteraction } from "../../components/PostInteraction/PostInteraction";
 import "./PostPage.css";
 import { IconArrowBack } from "@tabler/icons-react";
@@ -24,15 +24,15 @@ export const PostPage = () => {
       <IconArrowBack className="backArrow" stroke={2} />
       <div className="postContainer">
         <div className="postImg">
-          <Image src={data.media} alt="" w={736} />
+          <Image path={data.media} alt="" w={736} />
         </div>
         <div className="postDetails">
-          <PostInteraction></PostInteraction>
+          <PostInteraction postId={id}></PostInteraction>
           <Link to={`/${data.user.username}`} className="postUser">
-            <Image src={data.user.img || "/general/noAvatar.png"}></Image>
+            <Image path={data.user.img || "/general/noAvatar.png"}></Image>
             <span>{data.user.displayName}</span>
           </Link>
-          <Comments id = {data._id}></Comments>
+          <Comments id={data._id}></Comments>
         </div>
       </div>
     </div>

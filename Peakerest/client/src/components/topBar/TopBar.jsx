@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { Image } from "../image/image";
+import Image from "../image/image";
 import UserBotton from "../UserBotton/UserBotton";
 import "./TopBar.css";
 

@@ -1,4 +1,4 @@
-import { Image } from "../image/image";
+import  Image  from "../image/image";
 import {Link} from 'react-router'
 import "./LeftBar.css";
 

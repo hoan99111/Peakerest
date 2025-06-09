@@ -1,4 +1,4 @@
-import { Image } from "../image/image";
+import Image from "../image/image";
 import { format } from "timeago.js";
 
 export const Comment = ({ comment }) => {

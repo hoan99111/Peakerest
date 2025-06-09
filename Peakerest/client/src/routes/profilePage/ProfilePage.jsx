@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Image } from "../../components/image/image";
+import  Image  from "../../components/image/image";
 import "./ProfilePage.css";
 import Gallery from "../../components/Gallery/Gallery";
 import { Boards } from "../../components/boards/Boards";
@@ -17,6 +17,8 @@ export const ProfilePage = () => {
     queryFn: () => apiRequest.get(`/users/${username}`).then((res) => res.data),
   });
 
+  console.log("Profile data:", data);
+
   if (isPending) return "Loading ...";
 
   if (error) return "An error has occurred: " + error.message;
@@ -26,7 +28,7 @@ export const ProfilePage = () => {
   return (
     <div className="profilePage">
       <Image
-        src={data.img || "/general/noAvatar.png"}
+        path={data.img || "/general/noAvatar.png"}
         className="profileImg"
         w={100}
         h={100}
@@ -38,13 +40,13 @@ export const ProfilePage = () => {
       </div>
       <div className="profileInteractions">
         <Image path="/general/share.svg" alt=""></Image>
-        <div className="profileButtons">
+        {data.currentUser !== data.username ? <div className="profileButtons">
           <button>Message</button>
           <FollowButton
             isFollowing={data.isFollowing}
             username={data.username}
           ></FollowButton>
-        </div>
+        </div> : ""}
         <Image path="/general/more.svg" alt=""></Image>
       </div>
       <div className="profileOptions">

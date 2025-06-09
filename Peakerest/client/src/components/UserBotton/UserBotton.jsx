@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./UserBotton.css";
-import { Image } from "../image/image";
+import Image from "../image/image";
 import apiRequest from "../../utils/apiRequest";
 import { Link, useNavigate } from "react-router";
 import useAuthStore from "../../utils/storeAuth.js";

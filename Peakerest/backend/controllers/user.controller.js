@@ -29,11 +29,14 @@ export const getUSer = async (req, res) => {
           following: user._id,
         });
 
+        const currentUser = await User.findById(payload.userId);
+
         res.status(200).json({
           ...detailsWithoutPassword,
           followerCount,
           followingCount,
           isFollowing: isExits ? true : false,
+          currentUser: currentUser.username,
         });
       }
 

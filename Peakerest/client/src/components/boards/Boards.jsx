@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Image } from "../image/image";
+import Image from "../image/image";
 import "./Boards.css";
 import apiRequest from "../../utils/apiRequest";
 import { format } from "timeago.js";
