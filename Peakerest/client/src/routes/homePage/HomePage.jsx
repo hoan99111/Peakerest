@@ -1,4 +1,6 @@
 import Gallery from "../../components/Gallery/Gallery";
-export const HomePage = () => {
+ const HomePage = () => {
   return <Gallery></Gallery>;
 };
+
+export default HomePage;

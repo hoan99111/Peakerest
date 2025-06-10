@@ -8,13 +8,12 @@ import { Editor } from "../../components/editor/editor";
 import apiRequest from "../../utils/apiRequest";
 import useEditorStore from "../../utils/editorStore";
 
-
 const addPost = async (post) => {
   const res = await apiRequest.post("/pins", post);
   return res.data;
 };
 
-export const CreatePage = () => {
+const CreatePage = () => {
   const { currentUser } = useAuthStore();
   const navigate = useNavigate();
   const formRef = useRef(null);
@@ -71,7 +70,6 @@ export const CreatePage = () => {
       }
     }
   };
-
 
   return (
     <div className="createPage">
@@ -163,3 +161,5 @@ export const CreatePage = () => {
     </div>
   );
 };
+
+export default CreatePage;

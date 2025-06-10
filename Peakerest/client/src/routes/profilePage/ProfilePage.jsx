@@ -1,5 +1,5 @@
 import { useState } from "react";
-import  Image  from "../../components/image/image";
+import Image from "../../components/image/image";
 import "./ProfilePage.css";
 import Gallery from "../../components/Gallery/Gallery";
 import { Boards } from "../../components/boards/Boards";
@@ -8,7 +8,7 @@ import apiRequest from "../../utils/apiRequest";
 import { useParams } from "react-router";
 import FollowButton from "./FollowButton";
 
-export const ProfilePage = () => {
+const ProfilePage = () => {
   const [type, setType] = useState("saved");
   const { username } = useParams();
 
@@ -40,13 +40,17 @@ export const ProfilePage = () => {
       </div>
       <div className="profileInteractions">
         <Image path="/general/share.svg" alt=""></Image>
-        {data.currentUser !== data.username ? <div className="profileButtons">
-          <button>Message</button>
-          <FollowButton
-            isFollowing={data.isFollowing}
-            username={data.username}
-          ></FollowButton>
-        </div> : ""}
+        {data.currentUser !== data.username ? (
+          <div className="profileButtons">
+            <button>Message</button>
+            <FollowButton
+              isFollowing={data.isFollowing}
+              username={data.username}
+            ></FollowButton>
+          </div>
+        ) : (
+          ""
+        )}
         <Image path="/general/more.svg" alt=""></Image>
       </div>
       <div className="profileOptions">
@@ -71,3 +75,5 @@ export const ProfilePage = () => {
     </div>
   );
 };
+
+export default ProfilePage;

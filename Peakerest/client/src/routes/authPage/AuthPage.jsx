@@ -5,7 +5,7 @@ import Image from "../../components/image/image";
 import apiRequest from "../../utils/apiRequest";
 import useAuthStore from "../../utils/storeAuth";
 
-export const AuthPage = () => {
+const AuthPage = () => {
   const [isRegister, setIsRegister] = useState(false);
   const [error, setError] = useState(false);
 
@@ -138,3 +138,6 @@ export const AuthPage = () => {
     </div>
   );
 };
+
+
+export default AuthPage;

@@ -17,17 +17,13 @@ import {
 // import { CreatePage } from "./routes/createPage/CreatePage.jsx";
 // import { ProfilePage } from "./routes/profilePage/ProfilePage.jsx";
 
-const HomePage = React.lazy(() => import("./routes/homepage/HomePage.jsx"));
-const AuthPage = React.lazy(() => import("./routes/authpage/AuthPage.jsx"));
-const PostPage = React.lazy(() => import("./routes/postPage/PostPage.jsx"));
-const SearchPage = React.lazy(() =>
-  import("./routes/searchPage/SearchPage.jsx")
-);
-const CreatePage = React.lazy(() =>
-  import("./routes/createPage/CreatePage.jsx")
-);
+const HomePage = React.lazy(() => import("./routes/homepage/HomePage"));
+const AuthPage = React.lazy(() => import("./routes/authpage/AuthPage"));
+const PostPage = React.lazy(() => import("./routes/postPage/PostPage"));
+const SearchPage = React.lazy(() => import("./routes/searchPage/SearchPage"));
+const CreatePage = React.lazy(() => import("./routes/createPage/CreatePage"));
 const ProfilePage = React.lazy(() =>
-  import("./routes/profilePage/ProfilePage.jsx")
+  import("./routes/profilePage/ProfilePage")
 );
 
 const queryClient = new QueryClient();

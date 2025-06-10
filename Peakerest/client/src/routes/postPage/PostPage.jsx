@@ -7,7 +7,7 @@ import { Comments } from "../../components/Comments/Comments";
 import { useQuery } from "@tanstack/react-query";
 import apiRequest from "../../utils/apiRequest";
 
-export const PostPage = () => {
+const PostPage = () => {
   const { id } = useParams();
   const { isPending, error, data } = useQuery({
     queryKey: ["pin", id],
@@ -38,3 +38,5 @@ export const PostPage = () => {
     </div>
   );
 };
+
+export default PostPage;

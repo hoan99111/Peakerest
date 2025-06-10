@@ -6,3 +6,4 @@
 *.jpg
 *.ico
 *.txt
+.env
